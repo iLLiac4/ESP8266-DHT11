@@ -8,3 +8,4 @@ I suggest to use ESP8266 LuaLoader http://benlo.com/esp8266/index.html#LuaLoader
 To flash ESP8266 with firmware use ESP8266Flasher.exe
 This code has been tested with included flash rom nodemcu_512k_20141219.bin
 
+Fritzing sketch will be uploaded and also picture of firmware flash connection.
