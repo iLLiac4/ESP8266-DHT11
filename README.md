@@ -1,5 +1,5 @@
 # ESP8266-DHT11
-ESP8266 with DHT11 including sleep mode code
+ESP8266 with DHT11 including sleep mode code. To enable deep sleep on ESP-01 module you have to solder one wire like on this picture http://zftlab.org/images/2014102801.jpg You do not need to remove LED.
 
 To change the sleep time shange this part of code. It is basically minutes*seconds:
 
