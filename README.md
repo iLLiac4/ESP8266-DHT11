@@ -19,3 +19,5 @@ To flash ESP8266 with firmware use ESP8266Flasher.exe
 This code has been tested with flash rom nodemcu_512k_20141219.bin
 
 Capacitor used is 1000uF 6,3V
+
+![](https://github.com/iLLiac4/Adalight_Hyperion/blob/master/Ambilight_bb.png)
