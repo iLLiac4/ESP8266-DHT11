@@ -1,6 +1,6 @@
 --init.lua
 dofile("secret.lua")
-print("Setting up WIFI..."..ssid)
+print("Setting up WIFI..."..SSID)
 wifi.setmode(wifi.STATION)
 ap="XX"
 
@@ -15,14 +15,14 @@ ap="XX"
 wifi.sta.getap(listap)
 
 --modify according your wireless router settings
-wifi.sta.config(ssid, ssid_pass)
+wifi.sta.config(SSID, SSID_PASS)
 wifi.sta.connect()
-tmr.alarm(1, 1000, 1, function() 
-if wifi.sta.getip()== nil then 
-print("IP unavaiable, Waiting on home") 
-else 
+tmr.alarm(1, 1000, 1, function()
+if wifi.sta.getip()== nil then
+print("IP unavaiable, Waiting on home")
+else
 tmr.stop(1)
 print("Config done, IP is "..wifi.sta.getip())
 dofile("dht11.lua")
-end 
+end
 end)

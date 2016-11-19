@@ -1,3 +1,3 @@
-ssid="SSID"
-ssid_pass="password"
-thingspeak_key="API_Key"
+SSID="SSID"
+SSID_PASS="password"
+API_THINGSPEAK="API_KEY"
