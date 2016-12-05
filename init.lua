@@ -1,28 +1,28 @@
---init.lua
-dofile("secret.lua")
-print("Setting up WIFI..."..ssid)
-wifi.setmode(wifi.STATION)
-ap="XX"
+-- load credentials, 'SSID' and 'PASSWORD' declared and initialize in there
+dofile("credentials.lua")
 
-    function listap(t)
-      if (t~=nil) then
-          for k,v in pairs(t) do
-             ap = k
-             print(k.." : "..v)
-           end
-      end
+function startup()
+    if file.open("init.lua") == nil then
+        print("init.lua deleted or renamed")
+    else
+        print("Running")
+        file.close("init.lua")
+        dofile("application.lua")
     end
-wifi.sta.getap(listap)
+end
 
---modify according your wireless router settings
-wifi.sta.config(ssid, ssid_pass)
-wifi.sta.connect()
-tmr.alarm(1, 1000, 1, function() 
-if wifi.sta.getip()== nil then 
-print("IP unavaiable, Waiting on home") 
-else 
-tmr.stop(1)
-print("Config done, IP is "..wifi.sta.getip())
-dofile("dht11.lua")
-end 
+print("Connecting to WiFi access point...")
+wifi.setmode(wifi.STATION)
+wifi.sta.config(SSID, PASSWORD)
+-- wifi.sta.connect() not necessary because config() uses auto-connect=true by default
+tmr.alarm(1, 1000, 1, function()
+    if wifi.sta.getip() == nil then
+        print("Waiting for IP address...")
+    else
+        tmr.stop(1)
+        print("WiFi connection established, IP address: " .. wifi.sta.getip())
+        print("You have 3 seconds to abort")
+        print("Waiting...")
+        tmr.alarm(0, 3000, 0, startup)
+    end
 end)
